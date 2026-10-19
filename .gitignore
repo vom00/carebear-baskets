@@ -1,0 +1,25 @@
+# Photos stay on the live site, not in git
+uploads/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.heic
+*.mp4
+*.mov
+
+# Netlify local state
+.netlify/
+
+# Logs and secrets
+*.log
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/

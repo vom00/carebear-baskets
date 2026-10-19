@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carebear Baskets — Bringing Comfort to Kids in the PICU</title>
+  <meta name="description" content="Carebear Baskets is a student-led nonprofit at Coppell High School creating care baskets for children in the PICU." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── CSS Variables ─────────────────────────────────────── */
+    :root {
+      --clr-cream:        #fdf6ef;
+      --clr-blush:        #f7c5c5;
+      --clr-blush-light:  #fde8e8;
+      --clr-blush-deep:   #f0a8a8;
+      --clr-rose:         #d95f72;
+      --clr-rose-dark:    #bf4a5d;
+      --clr-rose-hover:   #c04060;
+      --clr-warm-white:   #fffaf7;
+      --clr-text:         #3a2020;
+      --clr-text-mid:     #6b3a3a;
+      --clr-text-light:   #9e6060;
+      --clr-card:         #ffffff;
+      --clr-border:       #f0d8d8;
+
+      --ff-display:       'Baloo 2', cursive;
+      --ff-body:          'Lato', sans-serif;
+
+      --radius-sm:        12px;
+      --radius-md:        20px;
+      --radius-lg:        28px;
+      --radius-xl:        40px;
+
+      --shadow-soft:      0 4px 24px rgba(180, 80, 80, 0.10);
+      --shadow-card:      0 2px 16px rgba(180, 80, 80, 0.08);
+      --shadow-hover:     0 8px 40px rgba(180, 80, 80, 0.18);
+
+      --sp-xs: 0.5rem;
+      --sp-sm: 1rem;
+      --sp-md: 1.5rem;
+      --sp-lg: 2.5rem;
+      --sp-xl: 4rem;
+      --sp-2xl: 7rem;
+
+      --nav-height: 68px;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--clr-cream);
+      color: var(--clr-text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── Focus States ─────────────────────────────────────── */
+    :focus-visible {
+      outline: 3px solid var(--clr-rose);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Typography ───────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--ff-display); line-height: 1.2; color: var(--clr-text); }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; }
+    h2 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 700; }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; }
+    h4 { font-size: 1.1rem; font-weight: 600; }
+    p { font-size: clamp(1rem, 1.8vw, 1.125rem); line-height: 1.75; color: var(--clr-text-mid); }
+
+    /* ── Section Utility ──────────────────────────────────── */
+    .section { position: relative; padding: var(--sp-2xl) var(--sp-sm); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--sp-md); }
+    .section-label {
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-rose);
+      margin-bottom: var(--sp-xs);
+    }
+    .section-title { margin-bottom: var(--sp-sm); }
+    .section-lead { max-width: 640px; margin-bottom: var(--sp-lg); }
+
+    /* ── Buttons ──────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      min-height: 48px;
+      min-width: 44px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary {
+      background: var(--clr-rose);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(217, 95, 114, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--clr-rose-hover);
+      box-shadow: 0 8px 28px rgba(217, 95, 114, 0.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--clr-rose-dark);
+      border: 2.5px solid var(--clr-rose);
+    }
+    .btn-outline:hover {
+      background: var(--clr-blush-light);
+      box-shadow: var(--shadow-soft);
+    }
+    .btn-large {
+      font-size: 1.2rem;
+      padding: 1.05rem 2.4rem;
+      min-height: 56px;
+    }
+
+    /* ── Navigation ───────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      background: rgba(253, 246, 239, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid var(--clr-border);
+      transition: box-shadow 0.2s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(180, 80, 80, 0.12); }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--sp-md);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-md);
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--clr-rose);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo svg { width: 28px; height: 28px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--clr-text-mid);
+      padding: 0.5rem 0.75rem;
+      border-radius: 999px;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: var(--clr-blush-light); color: var(--clr-rose); }
+    .nav-cta { margin-left: var(--sp-xs); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s;
+    }
+    .nav-hamburger:hover { background: var(--clr-blush-light); }
+    .nav-hamburger span {
+      width: 22px; height: 2.5px;
+      background: var(--clr-rose-dark);
+      border-radius: 4px;
+      transition: transform 0.2s, opacity 0.2s;
+      display: block;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: var(--clr-warm-white);
+      border-bottom: 1.5px solid var(--clr-border);
+      padding: var(--sp-sm) var(--sp-md) var(--sp-md);
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(180, 80, 80, 0.12);
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--clr-text-mid);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { background: var(--clr-blush-light); color: var(--clr-rose); }
+    .mobile-menu .btn { margin-top: 0.5rem; width: 100%; justify-content: center; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-height) + var(--sp-xl));
+      padding-bottom: var(--sp-xl);
+      display: flex;
+      align-items: center;
+      background: var(--clr-blush-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .hero-bg-blob-1 {
+      width: 600px; height: 600px;
+      background: var(--clr-blush);
+      top: -150px; right: -120px;
+    }
+    .hero-bg-blob-2 {
+      width: 400px; height: 400px;
+      background: #f9d5d5;
+      bottom: -100px; left: -80px;
+    }
+    .hero-bg-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(217, 95, 114, 0.12) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xl);
+      align-items: center;
+    }
+    .hero-text { max-width: 580px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: white;
+      border: 1.5px solid var(--clr-blush-deep);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-family: var(--ff-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--clr-rose);
+      margin-bottom: var(--sp-md);
+      box-shadow: var(--shadow-card);
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+    .hero-title {
+      font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: var(--sp-md);
+      color: var(--clr-text);
+    }
+    .hero-title .highlight {
+      color: var(--clr-rose);
+      position: relative;
+      white-space: nowrap;
+    }
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -4px;
+      height: 5px;
+      background: var(--clr-blush-deep);
+      border-radius: 3px;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      line-height: 1.7;
+      color: var(--clr-text-mid);
+      margin-bottom: var(--sp-lg);
+      max-width: 480px;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-sm);
+      align-items: center;
+    }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem 2.5rem 3rem 2.5rem;
+    }
+    .hero-illustration {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: visible;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    .hero-illustration-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-md);
+      padding: var(--sp-lg);
+    }
+    .hero-basket-icon {
+      width: 120px; height: 120px;
+    }
+    .hero-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    .hero-item-pill {
+      background: var(--clr-blush-light);
+      border: 1.5px solid var(--clr-blush-deep);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-family: var(--ff-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--clr-rose-dark);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .hero-floating-card {
+      position: absolute;
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 0.7rem 1rem;
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--clr-text);
+    }
+    .hero-floating-card svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .hero-floating-card-1 { bottom: -18px; left: -24px; animation: float-card-1 6s ease-in-out infinite; white-space: nowrap; }
+    .hero-floating-card-2 { top: -18px; right: -24px; animation: float-card-2 7s ease-in-out infinite; white-space: nowrap; }
+    @keyframes float-card-1 {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-10px) rotate(-2deg); }
+    }
+    @keyframes float-card-2 {
+      0%, 100% { transform: translateY(0) rotate(2deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    /* ── Wave Divider ─────────────────────────────────────── */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin-bottom: -2px;
+    }
+    .wave-divider svg { width: 100%; height: 70px; display: block; }
+
+    /* ── Background Section ───────────────────────────────── */
+    .section-background { background: var(--clr-warm-white); }
+    .background-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-xl);
+      align-items: center;
+    }
+    .background-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-sm);
+      margin-top: var(--sp-md);
+    }
+    .stat-card {
+      background: var(--clr-blush-light);
+      border: 1.5px solid var(--clr-blush-deep);
+      border-radius: var(--radius-md);
+      padding: var(--sp-md) var(--sp-sm);
+      text-align: center;
+    }
+    .stat-card .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clr-rose);
+      line-height: 1;
+    }
+    .stat-card .stat-label {
+      font-size: 0.85rem;
+      color: var(--clr-text-mid);
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+    .background-quote {
+      background: var(--clr-blush-light);
+      border-left: 4px solid var(--clr-rose);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: var(--sp-md) var(--sp-lg);
+      margin-top: var(--sp-md);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--clr-text-mid);
+      line-height: 1.7;
+    }
+
+    /* ── Goal Section ─────────────────────────────────────── */
+    .section-goal { background: var(--clr-blush); }
+    .goal-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--sp-xl);
+      align-items: center;
+    }
+    .goal-visual {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-sm);
+    }
+    .goal-progress-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      box-shadow: var(--shadow-soft);
+    }
+    .goal-progress-label {
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-text-mid);
+      margin-bottom: var(--sp-sm);
+      display: flex;
+      justify-content: space-between;
+    }
+    .goal-progress-label .goal-count {
+      font-size: 1.5rem;
+      color: var(--clr-rose);
+    }
+    .progress-bar-track {
+      background: var(--clr-blush-light);
+      border-radius: 999px;
+      height: 18px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--clr-blush-deep), var(--clr-rose));
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .goal-range {
+      font-family: var(--ff-display);
+      font-size: 0.85rem;
+      color: var(--clr-text-light);
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.4rem;
+    }
+    .goal-big-num {
+      font-family: var(--ff-display);
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 800;
+      color: var(--clr-rose);
+      line-height: 1;
+      margin-bottom: var(--sp-xs);
+    }
+    .goal-big-label {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--clr-text-mid);
+    }
+
+    /* ── Items Section ────────────────────────────────────── */
+    .section-items { background: var(--clr-warm-white); }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--sp-sm);
+      margin-top: var(--sp-lg);
+    }
+    .item-card {
+      background: var(--clr-card);
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-md) var(--sp-sm);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .item-icon {
+      width: 56px; height: 56px;
+      background: var(--clr-blush-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-sm);
+    }
+    .item-icon svg { width: 26px; height: 26px; color: var(--clr-rose); }
+    .item-name {
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-text);
+      margin-bottom: 0.25rem;
+    }
+    .item-desc {
+      font-size: 0.85rem;
+      color: var(--clr-text-light);
+      line-height: 1.5;
+    }
+
+    /* ── Donate Section ───────────────────────────────────── */
+    .section-donate { background: var(--clr-cream); }
+    .donate-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--sp-xl);
+      align-items: start;
+    }
+    .donate-items-list {
+      margin-top: var(--sp-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .donate-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: white;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      color: var(--clr-text-mid);
+      box-shadow: var(--shadow-card);
+    }
+    .donate-item svg { width: 18px; height: 18px; color: var(--clr-rose); flex-shrink: 0; margin-top: 2px; }
+    .donate-cta-box {
+      background: white;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-lg);
+      box-shadow: var(--shadow-soft);
+      position: sticky;
+      top: calc(var(--nav-height) + 1.5rem);
+    }
+    .donate-cta-box h3 { margin-bottom: var(--sp-sm); }
+    .donate-cta-box p { margin-bottom: var(--sp-md); font-size: 0.95rem; }
+    .instagram-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: var(--sp-md);
+    }
+    .insta-step {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--clr-text-mid);
+    }
+    .insta-step-num {
+      width: 28px; height: 28px;
+      background: var(--clr-rose);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Wishlist CTA ─────────────────────────────────────── */
+    .section-wishlist {
+      background: var(--clr-rose);
+      text-align: center;
+      padding: var(--sp-2xl) var(--sp-sm);
+    }
+    .section-wishlist h2 { color: white; }
+    .section-wishlist p { color: rgba(255,255,255,0.85); max-width: 560px; margin: var(--sp-sm) auto var(--sp-lg); }
+    .btn-white {
+      background: white;
+      color: var(--clr-rose);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover {
+      background: #fff5f5;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .wishlist-amazon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      color: white;
+      font-family: var(--ff-display);
+      font-weight: 600;
+      margin-top: var(--sp-md);
+    }
+
+    /* ── Team Section ─────────────────────────────────────── */
+    .section-team { background: var(--clr-blush-light); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--sp-sm);
+      margin-top: var(--sp-lg);
+    }
+    .team-card {
+      background: white;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-md) var(--sp-sm);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .team-avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: var(--clr-blush);
+      border: 3px solid var(--clr-blush-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-sm);
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--clr-rose);
+      overflow: hidden;
+    }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .team-name {
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--clr-text);
+      margin-bottom: 0.2rem;
+    }
+    .team-role {
+      font-size: 0.82rem;
+      color: var(--clr-text-light);
+      font-weight: 400;
+    }
+    .team-role-badge {
+      display: inline-block;
+      background: var(--clr-blush-light);
+      border: 1px solid var(--clr-blush-deep);
+      border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+      font-family: var(--ff-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--clr-rose-dark);
+      margin-top: 0.4rem;
+    }
+
+    /* ── Contact Section ──────────────────────────────────── */
+    .section-contact { background: var(--clr-warm-white); text-align: center; }
+    .contact-card {
+      max-width: 600px;
+      margin: var(--sp-lg) auto 0;
+      background: white;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-xl) var(--sp-lg);
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-ig-icon {
+      width: 80px; height: 80px;
+      background: var(--clr-blush-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-md);
+    }
+    .contact-ig-icon svg { width: 40px; height: 40px; color: var(--clr-rose); }
+    .contact-handle {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--clr-rose);
+      margin-bottom: var(--sp-sm);
+    }
+    .contact-card p { margin-bottom: var(--sp-lg); }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .footer {
+      background: var(--clr-text);
+      color: #f5e8e8;
+      padding: var(--sp-xl) var(--sp-sm) var(--sp-lg);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--clr-blush);
+      margin-bottom: var(--sp-xs);
+    }
+    .footer-tagline {
+      font-style: italic;
+      color: #c8a0a0;
+      font-size: 1rem;
+      margin-bottom: var(--sp-md);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--sp-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-md);
+    }
+    .footer-links a {
+      color: #c8a0a0;
+      font-family: var(--ff-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.15s;
+      text-decoration: none;
+      min-height: 44px;
+      align-items: center;
+    }
+    .footer-links a:hover { color: var(--clr-blush); }
+    .footer-links svg { width: 16px; height: 16px; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: var(--sp-md) 0 var(--sp-sm);
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #7a5555;
+    }
+    .footer-school {
+      font-size: 0.8rem;
+      color: #7a5555;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Events Section ───────────────────────────────────── */
+    .section-events { background: var(--clr-blush-light); }
+    .events-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--sp-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-lg);
+    }
+    .events-header-text { max-width: 620px; }
+    .events-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: white;
+      border: 1.5px solid var(--clr-blush-deep);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-family: var(--ff-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--clr-rose);
+      box-shadow: var(--shadow-card);
+      white-space: nowrap;
+    }
+    .events-tag svg { width: 15px; height: 15px; }
+    .events-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-sm);
+      margin-bottom: var(--sp-lg);
+    }
+    .event-stat {
+      background: white;
+      border: 1.5px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: var(--sp-md) var(--sp-sm);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .event-stat .event-stat-num {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--clr-rose);
+      line-height: 1;
+    }
+    .event-stat .event-stat-label {
+      font-size: 0.82rem;
+      color: var(--clr-text-mid);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+      font-weight: 700;
+      font-family: var(--ff-display);
+    }
+    .event-winner {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-md);
+      background: var(--clr-rose);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-md) var(--sp-lg);
+      margin-bottom: var(--sp-lg);
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-soft);
+    }
+    .event-winner-trophy {
+      width: 56px; height: 56px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .event-winner-trophy svg { width: 30px; height: 30px; color: white; }
+    .event-winner-text { flex: 1; min-width: 200px; }
+    .event-winner-label {
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+    .event-winner-name {
+      font-family: var(--ff-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.1;
+    }
+    .event-winner-sub {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+    .events-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 180px;
+      gap: var(--sp-sm);
+    }
+    .event-photo {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      background: var(--clr-blush);
+    }
+    .event-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .event-photo:hover img { transform: scale(1.06); }
+    .event-photo-wide { grid-column: span 2; }
+    .event-photo-tall { grid-row: span 2; }
+    .event-photo-feature { grid-column: span 2; grid-row: span 2; }
+    .events-stats-3 { grid-template-columns: repeat(3, 1fr); }
+    .events-stats-2 { grid-template-columns: repeat(2, 1fr); }
+    .event-block {
+      margin-top: var(--sp-xl);
+      padding-top: var(--sp-xl);
+      border-top: 1.5px solid var(--clr-blush-deep);
+    }
+    @media (max-width: 760px) {
+      .events-stats { grid-template-columns: repeat(2, 1fr); }
+      .events-stats-3 > :first-child { grid-column: span 2; }
+      .events-gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+      .event-photo-feature { grid-column: span 2; grid-row: span 2; }
+      .event-photo-wide { grid-column: span 2; }
+    }
+
+    /* ── Scroll Animations ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-ctas { justify-content: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-visual { margin-top: var(--sp-md); }
+      .background-layout,
+      .goal-layout,
+      .donate-layout {
+        grid-template-columns: 1fr;
+      }
+      .donate-cta-box { position: static; }
+    }
+    @media (max-width: 700px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-illustration { max-width: 320px; }
+      .background-stat-grid { grid-template-columns: 1fr 1fr; }
+      .items-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .section { padding: var(--sp-xl) var(--sp-xs); }
+    }
+    @media (max-width: 480px) {
+      .items-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .hero-items { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────── -->
+  <nav class="nav" id="main-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Carebear Baskets home">
+        <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" fill="#fde8e8" stroke="#e8768a" stroke-width="1.5"/>
+          <path d="M8 11.5C8 10.1 9.1 9 10.5 9S13 10.1 13 11.5c0 1.1-.8 2.6-2.5 4.5C8.8 14.1 8 12.6 8 11.5z" fill="#e8768a"/>
+          <path d="M15 11.5C15 10.1 16.1 9 17.5 9S20 10.1 20 11.5c0 1.1-.8 2.6-2.5 4.5C15.8 14.1 15 12.6 15 11.5z" fill="#e8768a"/>
+          <path d="M9 17h10a1 1 0 010 2H9a1 1 0 010-2z" fill="#f7c5c5"/>
+          <path d="M10 19l1 2h6l1-2H10z" fill="#e8768a"/>
+        </svg>
+        Carebear Baskets
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#background">Our Story</a></li>
+        <li><a href="#goal">Our Goal</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-primary nav-cta" aria-label="View Amazon Wishlist">
+        <svg viewBox="0 0 20 20" fill="none" width="16" height="16" aria-hidden="true"><path d="M3 5h14l-1.5 9H4.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="13" cy="17" r="1.2" fill="currentColor"/></svg>
+        Wishlist
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <a href="#background" class="mobile-link">Our Story</a>
+    <a href="#goal" class="mobile-link">Our Goal</a>
+    <a href="#events" class="mobile-link">Events</a>
+    <a href="#donate" class="mobile-link">Donate</a>
+    <a href="#team" class="mobile-link">Team</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-primary">
+      View Amazon Wishlist
+    </a>
+  </div>
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="hero-bg-blob hero-bg-blob-1" aria-hidden="true"></div>
+    <div class="hero-bg-blob hero-bg-blob-2" aria-hidden="true"></div>
+    <div class="hero-bg-dots" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="#e8768a" stroke-width="1.2"/><path d="M4 7l2 2 4-4" stroke="#e8768a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Student-led · Coppell High School
+          </div>
+          <h1 class="hero-title">
+            Bringing Comfort<br/>
+            to Kids in<br/>
+            <span class="highlight">the PICU</span>
+          </h1>
+          <p class="hero-sub">
+            We create care baskets filled with comfort items, activities, and love — for children spending weeks or months in the Pediatric Intensive Care Unit.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><path d="M3 5h14l-1.5 9H4.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="13" cy="17" r="1.2" fill="currentColor"/></svg>
+              Shop Our Wishlist
+            </a>
+            <a href="https://www.instagram.com/carebearbaskets/" target="_blank" rel="noopener" class="btn btn-outline btn-large">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
+              Follow on Instagram
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-illustration">
+            <div class="hero-floating-card hero-floating-card-1">
+              <svg viewBox="0 0 18 18" fill="none" width="18" height="18" aria-hidden="true"><path d="M9 1.5C9 1.5 3 6.5 3 10.5a6 6 0 0012 0C15 6.5 9 1.5 9 1.5z" stroke="#e8768a" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              50–75 baskets goal
+            </div>
+            <div class="hero-floating-card hero-floating-card-2" style="height: 85.375px; width: 180px">
+              <svg viewBox="0 0 18 18" fill="none" width="18" height="18" aria-hidden="true"><path d="M3 9l4 4 8-8" stroke="#e8768a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Ships straight to us
+            </div>
+            <div class="hero-illustration-inner">
+              <!-- Basket SVG icon -->
+              <svg class="hero-basket-icon" viewBox="0 0 120 120" fill="none" aria-label="Care basket illustration">
+                <!-- Handle -->
+                <path d="M30 55 Q30 25 60 25 Q90 25 90 55" stroke="#e8768a" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <!-- Basket body -->
+                <rect x="15" y="55" width="90" height="50" rx="14" fill="#fde8e8" stroke="#e8768a" stroke-width="2.5"/>
+                <!-- Weave lines -->
+                <line x1="15" y1="70" x2="105" y2="70" stroke="#f7c5c5" stroke-width="2"/>
+                <line x1="15" y1="83" x2="105" y2="83" stroke="#f7c5c5" stroke-width="2"/>
+                <line x1="35" y1="55" x2="35" y2="105" stroke="#f7c5c5" stroke-width="2"/>
+                <line x1="55" y1="55" x2="55" y2="105" stroke="#f7c5c5" stroke-width="2"/>
+                <line x1="75" y1="55" x2="75" y2="105" stroke="#f7c5c5" stroke-width="2"/>
+                <!-- Items peeking out -->
+                <circle cx="42" cy="48" r="10" fill="#f7c5c5" stroke="#e8768a" stroke-width="2"/>
+                <circle cx="60" cy="44" r="12" fill="#fde8e8" stroke="#e8768a" stroke-width="2"/>
+                <circle cx="78" cy="48" r="10" fill="#f0a8a8" stroke="#e8768a" stroke-width="2"/>
+                <!-- Heart on middle item -->
+                <path d="M57 42 C57 40.3 58.1 39.5 59 39.5 C60 39.5 61 40 61 40 C61 40 62 39.5 63 39.5 C63.9 39.5 65 40.3 65 42 C65 44 61 47 61 47 C61 47 57 44 57 42Z" fill="#e8768a"/>
+              </svg>
+              <div class="hero-items">
+                <div class="hero-item-pill">Cozy Socks</div>
+                <div class="hero-item-pill">Journals</div>
+                <div class="hero-item-pill">Teddy Bear</div>
+                <div class="hero-item-pill">Lip Balm</div>
+                <div class="hero-item-pill">Charger</div>
+                <div class="hero-item-pill">Toiletries</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,70 L0,70 Z" fill="#fffaf7"/>
+    </svg>
+  </div>
+
+  <!-- ── Background Section ─────────────────────────────────── -->
+  <section class="section section-background" id="background" aria-labelledby="background-title">
+    <div class="container">
+      <div class="background-layout">
+        <div>
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title reveal" id="background-title">Why We Started</h2>
+          <p class="reveal reveal-delay-1">
+            Children in the PICU don't just face medical challenges — they face isolation, fear, and endless days of boredom. Some spend weeks. Others spend months. A hospital room becomes their whole world.
+          </p>
+          <p class="reveal reveal-delay-2" style="margin-top: 1rem;">
+            Carebear Baskets was started by students at Coppell High School who believed that even in the hardest moments, a small gesture of care could make a big difference. Not a cure — just a reminder that someone out there is thinking of you.
+          </p>
+          <blockquote class="background-quote reveal reveal-delay-3">
+            "A child shouldn't have to feel alone in a hospital room. These baskets say: we see you, we care about you, and you are not forgotten."
+          </blockquote>
+        </div>
+        <div>
+          <div class="background-stat-grid">
+            <div class="stat-card reveal">
+              <div class="stat-num">Weeks</div>
+              <div class="stat-label">Average PICU stay for many families</div>
+            </div>
+            <div class="stat-card reveal reveal-delay-1">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Student-led, volunteer-driven effort</div>
+            </div>
+            <div class="stat-card reveal reveal-delay-2">
+              <div class="stat-num">PICU</div>
+              <div class="stat-label">Pediatric Intensive Care Unit — one of the hardest places to be</div>
+            </div>
+            <div class="stat-card reveal reveal-delay-3">
+              <div class="stat-num">CHS</div>
+              <div class="stat-label">Founded at Coppell High School, Texas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,70 720,0 1080,40 C1260,60 1380,20 1440,30 L1440,70 L0,70 Z" fill="#f7c5c5"/>
+    </svg>
+  </div>
+
+  <!-- ── Goal Section ───────────────────────────────────────── -->
+  <section class="section section-goal" id="goal" aria-labelledby="goal-title">
+    <div class="container">
+      <div class="goal-layout">
+        <div class="goal-visual">
+          <div class="goal-progress-card reveal">
+            <div class="goal-progress-label">
+              <span>Baskets Funded</span>
+              <span class="goal-count">70+ / 75</span>
+            </div>
+            <div class="progress-bar-track" role="progressbar" aria-label="Goal progress" aria-valuemin="0" aria-valuemax="75" aria-valuenow="70">
+              <div class="progress-bar-fill" id="progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="goal-range">
+              <span>0</span>
+              <span>Almost there! 70+ baskets funded.</span>
+              <span>75</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="section-label">Our Goal</p>
+          <div class="goal-big-num reveal">50–75</div>
+          <div class="goal-big-label reveal reveal-delay-1">Care Baskets</div>
+          <h2 class="section-title reveal reveal-delay-2" id="goal-title">One for Every Child</h2>
+          <p class="reveal reveal-delay-3">
+            Our goal is to assemble <strong>50 to 75 care baskets</strong> — enough for every child currently in the PICU. Each basket is filled with comfort items and activities designed to make their hospital stay a little easier and a little more "normal."
+          </p>
+          <p class="reveal reveal-delay-4" style="margin-top: 1rem;">
+            No child should feel like they're just a patient. Every basket is a reminder that they're a kid first — and kids deserve to feel cozy, loved, and cared for.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,50 C180,10 360,70 540,30 C720,0 900,60 1080,30 C1260,10 1380,50 1440,50 L1440,70 L0,70 Z" fill="#fde8e8"/>
+    </svg>
+  </div>
+
+  <!-- ── Events Section ─────────────────────────────────────── -->
+  <section class="section section-events" id="events" aria-labelledby="events-title">
+    <div class="container">
+      <div class="events-header">
+        <div class="events-header-text">
+          <p class="section-label">Events</p>
+          <h2 class="section-title reveal" id="events-title">Our Events</h2>
+          <p class="reveal reveal-delay-1">
+            Every event we run helps fill care baskets for kids in the PICU. Here is what all of our events have added up to so far.
+          </p>
+        </div>
+      </div>
+
+      <div class="events-stats events-stats-3">
+        <div class="event-stat reveal">
+          <div class="event-stat-num">$2,000</div>
+          <div class="event-stat-label">Raised Across All Events</div>
+        </div>
+        <div class="event-stat reveal reveal-delay-1">
+          <div class="event-stat-num">70+</div>
+          <div class="event-stat-label">PICU Baskets Funded</div>
+        </div>
+        <div class="event-stat reveal reveal-delay-2">
+          <div class="event-stat-num">80+</div>
+          <div class="event-stat-label">People at Our Events</div>
+        </div>
+      </div>
+
+      <!-- Back to School Bash -->
+      <article class="event-block" aria-labelledby="bash-title">
+        <div class="events-header">
+          <div class="events-header-text">
+            <h3 class="section-title reveal" id="bash-title">Back to School Bash</h3>
+            <p class="reveal reveal-delay-1">
+              On Aug 31 we held a kids' fair under a park pavilion to raise money for our baskets. Kids got henna and face painting, made slime and bracelets, and battled Beyblades.
+            </p>
+          </div>
+          <div class="events-tag reveal reveal-delay-2">
+            <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 1.5l1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4L1.7 5.8l4-.6z"/></svg>
+            Kids' Fair · Fundraiser
+          </div>
+        </div>
+
+        <div class="events-stats events-stats-2">
+          <div class="event-stat reveal">
+            <div class="event-stat-num">Aug 31</div>
+            <div class="event-stat-label">Event Date</div>
+          </div>
+          <div class="event-stat reveal reveal-delay-1">
+            <div class="event-stat-num">5</div>
+            <div class="event-stat-label">Activity Stations</div>
+          </div>
+        </div>
+
+        <div class="events-gallery">
+          <div class="event-photo event-photo-feature reveal">
+            <img src="uploads/bash_henna.webp" alt="Henna station: a volunteer draws a henna design on a child's hand" loading="lazy" />
+          </div>
+          <div class="event-photo reveal reveal-delay-1">
+            <img src="uploads/bash_facepaint.webp" alt="Face painting station: a volunteer paints a design on a child's face" loading="lazy" />
+          </div>
+          <div class="event-photo reveal reveal-delay-2">
+            <img src="uploads/bash_slime.webp" alt="Slime station: a volunteer and a child mix slime at a picnic table" loading="lazy" />
+          </div>
+          <div class="event-photo reveal reveal-delay-1">
+            <img src="uploads/bash_bracelets.webp" alt="Bracelet making station: a volunteer picks beads with a child" loading="lazy" />
+          </div>
+          <div class="event-photo reveal reveal-delay-2">
+            <img src="uploads/bash_beyblades.webp" alt="Beyblades station: spinning tops battle in a clear arena" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Pickleball Tournament -->
+      <article class="event-block" aria-labelledby="pickleball-title">
+      <div class="events-header">
+        <div class="events-header-text">
+          <h3 class="section-title reveal" id="pickleball-title">Our First Pickleball Tournament</h3>
+          <p class="reveal reveal-delay-1">
+            Our very first fundraiser was a single-elimination pickleball tournament — and it was a huge success! Players of all skill levels came out to compete, have fun, and support kids in the PICU. Every dollar raised goes straight into care baskets.
+          </p>
+        </div>
+        <div class="events-tag reveal reveal-delay-2">
+          <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7.5" cy="7.5" r="6"/><circle cx="5.5" cy="6" r="0.8" fill="currentColor" stroke="none"/><circle cx="9.5" cy="6" r="0.8" fill="currentColor" stroke="none"/><circle cx="7.5" cy="9.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+          Pickleball · Fundraiser
+        </div>
+      </div>
+
+      <div class="events-stats">
+        <div class="event-stat reveal">
+          <div class="event-stat-num">30</div>
+          <div class="event-stat-label">Registered Teams</div>
+        </div>
+        <div class="event-stat reveal reveal-delay-1">
+          <div class="event-stat-num">60</div>
+          <div class="event-stat-label">Players</div>
+        </div>
+        <div class="event-stat reveal reveal-delay-2">
+          <div class="event-stat-num">$565</div>
+          <div class="event-stat-label">Raised</div>
+        </div>
+        <div class="event-stat reveal reveal-delay-3">
+          <div class="event-stat-num">30+</div>
+          <div class="event-stat-label">PICU Baskets Funded</div>
+        </div>
+      </div>
+
+      <div class="event-winner reveal">
+        <div class="event-winner-trophy">
+          <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h12v5a6 6 0 01-12 0V5z"/><path d="M9 7H6a2 2 0 002 4"/><path d="M21 7h3a2 2 0 01-2 4"/><path d="M15 16v4"/><path d="M11 24h8"/><path d="M13 20h4l1 4h-6l1-4z"/></svg>
+        </div>
+        <div class="event-winner-text">
+          <div class="event-winner-label">🏆 Champions</div>
+          <div class="event-winner-name">Donda4L</div>
+          <div class="event-winner-sub">Winners of our first-ever pickleball tournament — congrats!</div>
+        </div>
+      </div>
+
+      <div class="events-gallery">
+        <div class="event-photo event-photo-feature reveal">
+          <img src="uploads/pb_biggroup.png" alt="Team and players gathered at the Carebear Baskets pickleball tournament" loading="lazy" />
+        </div>
+        <div class="event-photo reveal reveal-delay-1">
+          <img src="uploads/pb_group_clean.png" alt="Group of six attendees at the tournament" loading="lazy" />
+        </div>
+        <div class="event-photo reveal reveal-delay-2">
+          <img src="uploads/pb_twocourt.png" alt="Two players on the pickleball court" loading="lazy" />
+        </div>
+        <div class="event-photo reveal reveal-delay-1">
+          <img src="uploads/pb_banner_two.png" alt="Two attendees by the event banner" loading="lazy" />
+        </div>
+        <div class="event-photo reveal reveal-delay-2">
+          <img src="uploads/pb_four.png" alt="Four attendees smiling at the tournament" loading="lazy" />
+        </div>
+        <div class="event-photo event-photo-wide reveal reveal-delay-3">
+          <img src="uploads/pb_couple_wide.png" alt="Two players with a paddle at the tournament" loading="lazy" />
+        </div>
+        <div class="event-photo event-photo-wide reveal reveal-delay-3">
+          <img src="uploads/pb_fourguys.png" alt="Four players with paddles on the court" loading="lazy" />
+        </div>
+      </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,70 L0,70 Z" fill="#fffaf7"/>
+    </svg>
+  </div>
+
+  <!-- ── Items Section ──────────────────────────────────────── -->
+  <section class="section section-items" id="items" aria-labelledby="items-title">
+    <div class="container">
+      <p class="section-label">What's Inside</p>
+      <h2 class="section-title reveal" id="items-title">What's in Each Basket</h2>
+      <p class="section-lead reveal reveal-delay-1">
+        Every basket is thoughtfully packed with items chosen to bring comfort, reduce boredom, and make a hospital feel a little more like home.
+      </p>
+      <div class="items-grid">
+
+        <div class="item-card reveal">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13 Q6 8 9 8 Q13 8 13 13 Q13 18 9 18 Q6 18 5 13Z"/><path d="M21 13 Q20 8 17 8 Q13 8 13 13 Q13 18 17 18 Q20 18 21 13Z"/><path d="M5 13 Q3 20 7 21"/><path d="M21 13 Q23 20 19 21"/></svg>
+          </div>
+          <div class="item-name">Cozy Socks</div>
+          <div class="item-desc">Soft, warm socks to keep little feet comfortable during long stays</div>
+        </div>
+
+        <div class="item-card reveal reveal-delay-1">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="10" r="5"/><path d="M13 5 C13 5 11 2 9 3 S9 6 10 7"/><path d="M13 5 C13 5 15 2 17 3 S17 6 16 7"/><ellipse cx="13" cy="18" rx="5" ry="4"/><path d="M8 15 Q5 22 8 23 Q13 25 18 23 Q21 22 18 15"/></svg>
+          </div>
+          <div class="item-name">Teddy Bear</div>
+          <div class="item-desc">A soft companion for comfort during difficult nights</div>
+        </div>
+
+        <div class="item-card reveal reveal-delay-2">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="16" height="20" rx="2"/><line x1="9" y1="8" x2="17" y2="8"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="16" x2="14" y2="16"/></svg>
+          </div>
+          <div class="item-name">Journal &amp; Activity Books</div>
+          <div class="item-desc">Creative outlets for expression and entertainment</div>
+        </div>
+
+        <div class="item-card reveal reveal-delay-3">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="13" cy="15" rx="5" ry="6"/><rect x="10" y="4" width="6" height="7" rx="3"/><path d="M10 7 Q8 7 8 10 L8 11"/><path d="M16 7 Q18 7 18 10 L18 11"/></svg>
+          </div>
+          <div class="item-name">Lip Balm &amp; Lotion</div>
+          <div class="item-desc">Fragrance-free formulas gentle on sensitive skin</div>
+        </div>
+
+        <div class="item-card reveal reveal-delay-4">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="3" width="10" height="16" rx="4"/><path d="M13 19 L13 23"/><path d="M9 23 L17 23"/></svg>
+          </div>
+          <div class="item-name">Phone Charger</div>
+          <div class="item-desc">Stay connected to family and friends during treatment</div>
+        </div>
+
+        <div class="item-card reveal reveal-delay-5">
+          <div class="item-icon">
+            <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 L18 3 L20 10 Q20 14 13 14 Q6 14 6 10 Z"/><path d="M6 10 L6 20 Q6 23 10 23 L16 23 Q20 23 20 20 L20 10"/><line x1="8" y1="17" x2="18" y2="17"/></svg>
+          </div>
+          <div class="item-name">Travel Toiletries</div>
+          <div class="item-desc">Shampoo, conditioner, body wash &amp; deodorant — the essentials</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C300,70 600,0 900,50 C1100,80 1300,20 1440,20 L1440,70 L0,70 Z" fill="#fdf6ef"/>
+    </svg>
+  </div>
+
+  <!-- ── Donate Section ─────────────────────────────────────── -->
+  <section class="section section-donate" id="donate" aria-labelledby="donate-title">
+    <div class="container">
+      <div class="donate-layout">
+        <div>
+          <p class="section-label">How to Help</p>
+          <h2 class="section-title reveal" id="donate-title">Items We Need Most</h2>
+          <p class="reveal reveal-delay-1">
+            You can help fill a basket! Here are the items we need most. Every donation makes a real difference for a child in need.
+          </p>
+
+          <div class="donate-items-list">
+            <div class="donate-item reveal">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Journals and pens</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-1">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Gum and mints</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-2">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Lip balms</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-3">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Shower shoes (for kids)</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-4">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Hand lotion — no strong fragrances, sensitive skin</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-5">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Pocket tissues</span>
+            </div>
+            <div class="donate-item reveal">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Cozy socks</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-1">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Travel-size toiletries — shampoo, conditioner, body wash, deodorant</span>
+            </div>
+            <div class="donate-item reveal reveal-delay-2">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="8"/><path d="M6 9l2 2 4-4"/></svg>
+              <span>Medium-sized teddy bears</span>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div>
+          <div class="donate-cta-box reveal">
+            <h3>Ready to Donate?</h3>
+            <p>The easiest way is through our Amazon Wishlist — items ship directly to us. Or DM us on Instagram to arrange a drop-off.</p>
+
+            <div style="margin-bottom: 1.25rem;">
+              <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-primary btn-large" style="width:100%; justify-content:center;">
+                <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><path d="M3 5h14l-1.5 9H4.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="13" cy="17" r="1.2" fill="currentColor"/></svg>
+                View Amazon Wishlist
+              </a>
+            </div>
+
+            <p style="font-family: var(--ff-display); font-weight: 700; font-size: 0.9rem; color: var(--clr-text); margin-bottom: 0.5rem;">Or drop off items in person:</p>
+            <div class="instagram-steps">
+              <div class="insta-step">
+                <div class="insta-step-num">1</div>
+                <span>DM us on Instagram <strong>@carebearbaskets</strong></span>
+              </div>
+              <div class="insta-step">
+                <div class="insta-step-num">2</div>
+                <span>We'll share the drop-off location</span>
+              </div>
+              <div class="insta-step">
+                <div class="insta-step-num">3</div>
+                <span>We'll confirm receipt &amp; thank you!</span>
+              </div>
+            </div>
+
+            <a href="https://www.instagram.com/carebearbaskets/" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%; justify-content:center;">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
+              DM on Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Wishlist CTA ────────────────────────────────────────── -->
+  <section class="section-wishlist" id="wishlist" aria-label="Amazon Wishlist call to action">
+    <div class="container">
+      <p class="section-label" style="color: rgba(255,255,255,0.7);">Make an Impact</p>
+      <h2 class="reveal" style="color:white;">Shop Our Wishlist</h2>
+      <p class="reveal reveal-delay-1">Every item you purchase goes directly into a basket for a child in the PICU. It takes just a few minutes — and means the world to a family going through one of the hardest times of their lives.</p>
+      <div class="reveal reveal-delay-2">
+        <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-white btn-large">
+          <svg viewBox="0 0 20 20" fill="none" width="20" height="20" aria-hidden="true"><path d="M3 5h14l-1.5 9H4.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="13" cy="17" r="1.2" fill="currentColor"/></svg>
+          View on Amazon Wishlist
+        </a>
+        <div style="margin-top: 1rem;">
+          <span class="wishlist-amazon-badge">
+            <svg viewBox="0 0 16 16" fill="none" width="14" height="14" aria-hidden="true"><path d="M2 4h12l-1 8H3L2 4z" stroke="white" stroke-width="1.2" stroke-linejoin="round"/><circle cx="6.5" cy="14" r="1" fill="white"/><circle cx="10.5" cy="14" r="1" fill="white"/></svg>
+            Ships directly to us · Easy &amp; secure
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Team Section ───────────────────────────────────────── -->
+  <section class="section section-team" id="team" aria-labelledby="team-title">
+    <div class="container">
+      <p class="section-label">The People Behind the Baskets</p>
+      <h2 class="section-title reveal" id="team-title">Meet the Team</h2>
+      <p class="section-lead reveal reveal-delay-1">
+        A group of passionate Coppell High School students turning care into action — one basket at a time.
+      </p>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-avatar">
+            <img src="uploads/team_jyotsna.png" alt="Jyotsna, President" />
+          </div>
+          <div class="team-name">Jyotsna</div>
+          <div class="team-role-badge">President</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar">
+            <img src="uploads/team_gauri.png" alt="Gauri, Vice President" />
+          </div>
+          <div class="team-name">Gauri</div>
+          <div class="team-role-badge">Vice President</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-avatar">
+            <img src="uploads/team_jasmine.png" alt="Jasmine, Logistics Director" />
+          </div>
+          <div class="team-name">Jasmine</div>
+          <div class="team-role-badge">Logistics Director</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-avatar">
+            <img src="uploads/team_masooma.png" alt="Masooma, Marketing Lead" />
+          </div>
+          <div class="team-name">Masooma</div>
+          <div class="team-role-badge">Marketing Lead</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-avatar">
+            <img src="uploads/team_vivia.png" alt="Vivia, Events Director" />
+          </div>
+          <div class="team-name">Vivia</div>
+          <div class="team-role-badge">Events Director</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-5">
+          <div class="team-avatar">
+            <img src="uploads/team_arjun.png" alt="Arjun, Treasurer" />
+          </div>
+          <div class="team-name">Arjun</div>
+          <div class="team-role-badge">Treasurer</div>
+        </div>
+
+        <div class="team-card reveal reveal-delay-6">
+          <div class="team-avatar">
+            <img src="uploads/team_vyom.png" alt="Vyom, Tech Lead" />
+          </div>
+          <div class="team-name">Vyom</div>
+          <div class="team-role-badge">Tech Lead</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave -->
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,50 C200,10 400,70 720,30 C960,0 1200,60 1440,50 L1440,70 L0,70 Z" fill="#fffaf7"/>
+    </svg>
+  </div>
+
+  <!-- ── Contact Section ────────────────────────────────────── -->
+  <section class="section section-contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <p class="section-label">Get Involved</p>
+      <h2 class="section-title reveal" id="contact-title">Say Hello</h2>
+      <p class="reveal reveal-delay-1" style="max-width:500px; margin:0 auto;">
+        Have questions? Want to donate in person? Want to get involved? We'd love to hear from you.
+      </p>
+      <div class="contact-card reveal reveal-delay-2">
+        <div class="contact-ig-icon">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2.5"/><circle cx="29.5" cy="10.5" r="2" fill="currentColor"/></svg>
+        </div>
+        <div class="contact-handle">@carebearbaskets</div>
+        <p>The best way to reach us is through Instagram. DM us for drop-off details, donation questions, or just to say hi. We love meeting people who care.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+          <a href="https://www.instagram.com/carebearbaskets/" target="_blank" rel="noopener" class="btn btn-primary btn-large">
+            <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="1" fill="currentColor"/></svg>
+            Follow &amp; DM Us
+          </a>
+          <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" class="btn btn-outline btn-large">
+            <svg viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true"><path d="M3 5h14l-1.5 9H4.5L3 5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="13" cy="17" r="1.2" fill="currentColor"/></svg>
+            Shop Wishlist
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-logo">Carebear Baskets</div>
+      <div class="footer-tagline">"Every basket is a reminder: you are not alone."</div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="https://www.instagram.com/carebearbaskets/" target="_blank" rel="noopener" aria-label="Carebear Baskets on Instagram">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="4" r="0.9" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.amazon.com/hz/wishlist/ls/2AF6Q3IDQTKDJ" target="_blank" rel="noopener" aria-label="Amazon Wishlist">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12l-1 8H3L2 4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="6" cy="13.5" r="0.9" fill="currentColor"/><circle cx="10" cy="13.5" r="0.9" fill="currentColor"/></svg>
+          Amazon Wishlist
+        </a>
+        <a href="#donate">Donate Items</a>
+        <a href="#events">Events</a>
+        <a href="#team">Meet the Team</a>
+      </nav>
+      <hr class="footer-divider" />
+      <p class="footer-copy">Carebear Baskets &copy; 2026–2027</p>
+      <p class="footer-school">A student-led nonprofit · Coppell High School, Texas</p>
+    </div>
+  </footer>
+
+  <!-- ── JavaScript ─────────────────────────────────────────── -->
+  <script>
+    // ── Navigation scroll behavior ──────────────────────────
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── Mobile hamburger ────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Scroll reveal ───────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // ── Progress bar animation ──────────────────────────────
+    const progressBar = document.getElementById('progress-bar');
+    const progressTrack = progressBar && progressBar.parentElement;
+    const funded = progressTrack ? Number(progressTrack.getAttribute('aria-valuenow')) : 0;
+    const goal = progressTrack ? Number(progressTrack.getAttribute('aria-valuemax')) : 1;
+    const progressPct = Math.min(100, (funded / goal) * 100);
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            progressBar.style.width = progressPct + '%';
+          }, 400);
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (progressBar) progressObserver.observe(progressBar.closest('.goal-progress-card'));
+
+    // ── Smooth scroll offset for sticky nav ────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
