@@ -2,7 +2,7 @@
 
 The website for Carebear Baskets: https://carebearbaskets.netlify.app
 
-Carebear Baskets is a student-led nonprofit at Coppell High School. We make care baskets for kids in the Pediatric Intensive Care Unit (PICU). Our goal is 75 baskets, and we have funded 70+ so far. I'm the Tech Lead.
+Carebear Baskets is a student-led nonprofit at Coppell High School. We make care baskets for kids in the Pediatric Intensive Care Unit (PICU). Our goal is 75 baskets, and we have funded 70+ so far. I'm the Tech Lead, and I built this site.
 
 ## What's on the site
 
