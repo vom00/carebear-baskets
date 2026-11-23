@@ -1,5 +1,5 @@
-# Photos stay on the live site, not in git
-uploads/
+# Photos stay out of git (see README: deploy with the Vercel CLI so they ship)
+public/uploads/
 *.png
 *.jpg
 *.jpeg
@@ -9,7 +9,18 @@ uploads/
 *.mp4
 *.mov
 
-# Netlify local state
+# The 3D panda's texture is part of the site, not a photo
+!public/models/Textures/colormap.png
+
+# Next.js and npm
+/node_modules
+/.next/
+/out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Hosting local state
+.vercel
 .netlify/
 
 # Logs and secrets

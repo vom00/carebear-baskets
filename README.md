@@ -6,29 +6,50 @@ Carebear Baskets is a student-led nonprofit at Coppell High School. We make care
 
 ## What's on the site
 
-- Why we started, and what goes in each basket
-- A goal tracker showing baskets funded out of 75
-- Our events, with totals across all of them: $2,000 raised, 70+ baskets funded and 80+ people at our events
+- **Home** (`/`): a 3D panda sitting in a care basket, the links to our wishlist and Instagram, and a goal tracker with one square per basket out of 75
+- **Story** (`/story`): why we started, and what goes in each basket
+- **Events** (`/events`): totals across all our events ($2,000 raised, 70+ baskets funded, 80+ people), plus
   - Back to School Bash (Aug 31): a kids' fair under a park pavilion with henna, face painting, slime, bracelet making and Beyblades
   - Our first pickleball tournament: 30 teams and 60 players raised $565 and funded 30+ baskets. Donda4L won.
-- The items we need most, with a link to our Amazon wishlist
-- The team, and how to reach us on Instagram at @carebearbaskets
+- **Help** (`/help`): our Amazon wishlist, the items we need most, and how to drop things off
+- **Team** (`/team`): the seven of us
+
+Every page ends with how to reach us on Instagram at @carebearbaskets.
 
 ## How it's built
 
-The whole site is one file, [`index.html`](index.html). The CSS sits in a `<style>` tag at the top and the JavaScript is at the bottom. There is no framework or build step. Fonts load from Google Fonts.
+The site is a [Next.js](https://nextjs.org) app (React, TypeScript, Tailwind). Every page is static, so it builds to plain HTML.
 
-The script handles the mobile menu, fades sections in as you scroll, and fills the goal bar. The bar's width comes from `aria-valuenow` and `aria-valuemax` on the progress bar, so updating the goal means changing the number in `.goal-count` and in `aria-valuenow`. The script works out the rest.
+- `src/app/` has one folder per page, plus `layout.tsx` (the nav and footer every page shares) and `globals.css` (colours, fonts and most of the styling)
+- `src/components/panda-stage.tsx` is the 3D panda, made with [three.js](https://threejs.org). The basket is built out of blocks in code. Click the panda or the button under it and it dances.
+- `src/components/ruixen/` and `src/components/ui/animated-counter.tsx` are components I added with the shadcn CLI. Where I changed one, there's a comment starting with `Carebear edit`.
+- Animations use [Motion](https://motion.dev). If your device is set to reduce motion, they turn off.
+
+### Updating the goal
+
+Change `funded` in [`src/lib/site.ts`](src/lib/site.ts). The goal tracker, the meter on the home page and the events totals all read from there. The wishlist and Instagram links live in the same file.
 
 ## Photos
 
-The photos are in `uploads/` on the live site but not in this repo, because I keep media files out of git. If you clone the repo and open `index.html`, the layout works and the photos show up blank.
+The photos are in `public/uploads/` on my computer but not in this repo, because I keep media files out of git. If you clone the repo and run it, the layout works and the photos show up blank.
 
 ## Running and deploying
 
-To look at it locally, open `index.html` in a browser.
+You need [Node.js](https://nodejs.org) 20 or newer.
 
-The site is hosted on Netlify. To update it, drag the site folder (`index.html` plus `uploads/`) onto the Deploys page of the Netlify site.
+```
+npm install
+npm run dev
+```
+
+Then open http://localhost:3000. `npm run build` checks everything compiles the way it will when it's live.
+
+The site is moving from Netlify to [Vercel](https://vercel.com). Because the photos aren't in git, deploy from my computer with the Vercel CLI (`npx vercel --prod`) instead of connecting the GitHub repo. That way `public/uploads/` gets uploaded too.
+
+## Credits
+
+- 3D panda: [Cube Pets by Kenney](https://kenney.nl/assets/cube-pets) (CC0). The model and its licence are in `public/models/`.
+- Components: [Ruixen](https://ruixen.com) (MIT) and [RareUI](https://rareui.com). RareUI's licence asks for a visible link to rareui.com, which is in the footer, and the credit has to stay in the component's source.
 
 ## Related
 
@@ -36,4 +57,4 @@ The site is hosted on Netlify. To update it, drag the site folder (`index.html` 
 
 ## AI help
 
-AI (Claude) wrote the October 2026 update to the site (the Back to School Bash section, the event totals and the new goal numbers) and this README.
+AI (Claude) wrote the October 2026 update to the site (the Back to School Bash section, the event totals and the new goal numbers). In November 2026 it also redesigned the site, moved it to Next.js with separate pages, added the 3D panda and rewrote this README.
