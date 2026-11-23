@@ -1,6 +1,6 @@
 # carebear-baskets
 
-The website for Carebear Baskets: https://carebearbaskets.netlify.app
+The website for Carebear Baskets: https://carebearbaskets.vercel.app
 
 Carebear Baskets is a student-led nonprofit at Coppell High School. We make care baskets for kids in the Pediatric Intensive Care Unit (PICU). Our goal is 75 baskets, and we have funded 70+ so far. I'm the Tech Lead, and I built this site.
 
@@ -44,7 +44,7 @@ npm run dev
 
 Then open http://localhost:3000. `npm run build` checks everything compiles the way it will when it's live.
 
-The site is moving from Netlify to [Vercel](https://vercel.com). Because the photos aren't in git, deploy from my computer with the Vercel CLI (`npx vercel --prod`) instead of connecting the GitHub repo. That way `public/uploads/` gets uploaded too.
+The site is hosted on [Vercel](https://vercel.com) (it used to be on Netlify). Because the photos aren't in git, deploy from my computer with the Vercel CLI (`npx vercel --prod`) instead of letting Vercel build from GitHub. That way `public/uploads/` gets uploaded too.
 
 ## Credits
 
